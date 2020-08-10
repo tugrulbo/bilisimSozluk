@@ -32,17 +32,19 @@ k = 0
 if k<=len(english_Words):
   for k in range(len(english_Words)):
     word = english_Words[k]
-    strWord = json.dumps(word)
+    strWord = json.dumps(word, ensure_ascii=False)
     startWord = strWord.replace('"',"")
     en = startWord.replace("[","")
     enWord = en.replace("]","")
+    enWord = enWord.lower()
     
     wordT = turkish_Words[k]
     strWordT = json.dumps(wordT,ensure_ascii=False)
     startWordT = strWordT.replace('"',"")
     tr = startWordT.replace("[","")
     trWord = tr.replace("]","")
-    if(enWord =="NaN"):
+    trWord = trWord.lower()
+    if(enWord =="nan"):
       k += 1
       print(f"NaN:{k}")
       continue
